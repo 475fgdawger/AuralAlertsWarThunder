@@ -5,8 +5,98 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AuralAlertsWarThunder"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="475FG Aural Alerts v3.0" Height="572" Width="910" ResizeMode="CanMinimize" Background="#FF4A5D53" FontFamily="Stencil" Closing="Window_Closing" Loaded="Window_Loaded">
+    <Grid Margin="35,0,10.667,15">
+        <Grid.RowDefinitions>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+
+        </Grid.ColumnDefinitions>
+        <TabControl x:Name="tabControl" Margin="23,6,0,85" Background="{x:Null}" HorizontalAlignment="Left" Width="773">
+            <TabControl.Resources>
+                <Style TargetType="TabItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TabItem">
+                                <Grid Name="Panel">
+                                    <ContentPresenter x:Name="ContentSite"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        ContentSource="Header"
+                                        Margin="10,2"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="Panel" Property="Background" Value="#FFE8855A" />
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="False">
+                                        <Setter TargetName="Panel" Property="Background" Value="#FF6B7865" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TabControl.Resources>
+
+            <TabItem Header="Options" Background="#FF6B7865">
+                <Grid Margin="15,13,-27.667,-66.333" RenderTransformOrigin="0.493,0.537">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="textBox_jokSlider" Height="16" Margin="168,63,550,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding Value, ElementName=slider_jok}" Background="#FF6B7865"/>
+                    <Slider x:Name="slider_jok" Margin="98,206,341,0" VerticalAlignment="Top" TickPlacement="TopLeft" Maximum="30" Minimum="1" SmallChange="0" IsSnapToTickEnabled="True" Value="7" RenderTransformOrigin="0.5,0.5" ValueChanged="Slider_jok_ValueChanged" Foreground="#FF090000" Height="33" BorderBrush="#FFF61313" Background="#FF6B7865" >
+                        <Slider.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-90.109"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Slider.RenderTransform>
+                    </Slider>
+                    <CheckBox x:Name="cbx_jok" Content="Joker Fuel time" HorizontalAlignment="Left" Margin="172,35,0,0" VerticalAlignment="Top" IsChecked="True" ClickMode="Press" Checked="Cbx_jok_Checked" Unchecked="Cbx_jok_Unchecked" Background="#FF6B7865" Height="15" Width="120"/>
+
+                    <TextBox x:Name="textBox_bgoSlider" Height="16" Margin="8,62,710,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding Value, ElementName=slider_bgo}" Background="#FF6B7865" RenderTransformOrigin="0.498,0.719"/>
+                    <Slider x:Name="slider_bgo" Margin="-79,192,664,0" VerticalAlignment="Top" TickPlacement="TopLeft" Maximum="15" Minimum="1" SmallChange="1" IsSnapToTickEnabled="True" Value="3" RenderTransformOrigin="0.5,0.5" ValueChanged="Slider_bgo_ValueChanged" Foreground="#FF050000" Background="#FF6B7865" Height="27" >
+                        <Slider.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleY="-1"/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-90.103"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Slider.RenderTransform>
+                    </Slider>
+                    <CheckBox x:Name="cbx_bgo" Content="Bingo Fuel time" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" ClickMode="Press" Unchecked="Cbx_bgo_Unchecked" Checked="Cbx_bgo_Checked" Background="#FF6B7865" Height="15" Width="118"/>
+                    <Label Content="set joker and bingo to the&#xD;&#xA;desired minutes remaining&#xD;&#xA;to trigger each message.&#xD;&#xA;&#xD;&#xA;" HorizontalAlignment="Left" Height="53" Margin="72,116,0,0" VerticalAlignment="Top" Width="141" FontSize="10"/>
+                    <CheckBox x:Name="cbx_VGM" Content="&quot;G&quot; Sounds" HorizontalAlignment="Left" Margin="606,68,0,0" VerticalAlignment="Top" IsChecked="True" ClickMode="Press" Background="#FF6B7865" Height="15" Width="86"/>
+                    <CheckBox x:Name="cbx_ovsd" Content="Overspeed Sound" HorizontalAlignment="Left" Margin="605,92,0,0" VerticalAlignment="Top" IsChecked="True" ClickMode="Press" Background="#FF6B7865" Height="15" Width="128"/>
+                    <CheckBox x:Name="cbx_flaps" Content="Flap Warnings" HorizontalAlignment="Left" Margin="605,214,0,0" VerticalAlignment="Top" IsChecked="True" ClickMode="Press" Background="#FF6B7865" Height="15" Width="112"/>
+                    <CheckBox x:Name="cbx_gear" Content="Landing Gear" HorizontalAlignment="Left" Margin="605,191,0,0" VerticalAlignment="Top" IsChecked="True" ClickMode="Press" Background="#FF6B7865" Height="15" Width="103"/>
+                    <CheckBox x:Name="cbx_overht" Content="Radiator Warnings" HorizontalAlignment="Left" Margin="605,280,0,0" VerticalAlignment="Top" IsChecked="True" ClickMode="Press" Background="#FF6B7865" Height="16" Width="142"/>
+                    <CheckBox x:Name="cbx_engfail" Content="Engine Failure" HorizontalAlignment="Left" Margin="605,258,0,0" VerticalAlignment="Top" IsChecked="True" ClickMode="Press" Background="#FF6B7865" Height="15" Width="114"/>
+                    <CheckBox x:Name="cbx_ovrg" Content="Over &quot;G&quot; Sound" HorizontalAlignment="Left" Margin="605,46,0,0" VerticalAlignment="Top" IsChecked="True" ClickMode="Press" Background="#FF6B7865" Height="15" Width="112"/>
+                    <CheckBox x:Name="cbx_stall" Content="Stall Sound" HorizontalAlignment="Left" Margin="605,114,0,0" VerticalAlignment="Top" IsChecked="True" ClickMode="Press" Background="#FF6B7865" Height="15" Width="94" RenderTransformOrigin="2.66,0.611"/>
+                    <CheckBox x:Name="cbx_recorddata" Content="Record Flight Data to File" HorizontalAlignment="Left" Margin="373,341,0,0" VerticalAlignment="Top" ClickMode="Press" FontFamily="Sylfaen" FontSize="16" Background="#FF6B7865" Height="25" Width="234" RenderTransformOrigin="0.5,0.5"/>
+                    <CheckBox x:Name="cbx_flapsuggest" Content="Flap Reminders" HorizontalAlignment="Left" Margin="605,236,0,0" VerticalAlignment="Top" IsChecked="True" ClickMode="Press" Background="#FF6B7865" Height="15" Width="118"/>
+                    <Label Content="Aerodynamics Items" HorizontalAlignment="Left" Margin="597,14,0,0" VerticalAlignment="Top" Width="139" Foreground="#FF160909" Background="#FFEA926B" Height="23"/>
+                    <Label Content="  Systems Items" HorizontalAlignment="Left" Margin="596,156,0,0" VerticalAlignment="Top" Width="139" Background="#FFE8855A" Height="26" FontSize="14"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tab_main" Header="Status" Background="#FF6B7865">
+                <Grid Margin="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="tbx_msgs" Height="97" Margin="10,10,100,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2" Background="#FF745656" BorderBrush="#FF2B0325"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Label x:Name="label" Content="475FG Satan's Angels" Margin="0,-2,2,0" VerticalAlignment="Top" HorizontalAlignment="Right" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Width="230" FontWeight="Bold" Background="#FFE8855A"/>
     </Grid>
 </Window>

@@ -34,9 +34,26 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>AuralAlertsWTIcon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CsvHelper, Version=12.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <HintPath>..\packages\CsvHelper.12.1.2\lib\net45\CsvHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,6 +72,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AircraftType.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -63,6 +86,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="dataModel.cs" />
+    <Compile Include="JsonSerializer.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -77,22 +102,147 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Resources\BettyIsReady.wav" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="Resources\charge.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BingoFuel.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jokerfuel.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bingo.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AngleOfAttackOverLimit.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MaximumAngleOfAttack.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\warnwatertemp.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cautionwatertemp.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cautionoiltemp.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\warnoiltemp.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fiveG.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eightG.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FlapsCombat.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FlapsLand.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FlapsTakeoff.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fourG.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GearDown.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sevenG.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nineG.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sixG.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tenG.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\checkgear2.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\laser.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dawgerisgod.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OverG.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GOverLimit.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\overspeed.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FlapsUpSelected.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flapsupamericanfemale.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AuralAlertsWTIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AuralAlertsWTIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\engine1fail.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\engine2fail.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\engine1degraded.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\engine2degraded.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\criticalG.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\checkflaps.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Isuggestflapscombat.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Isuggestflapsland.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Isuggestflapstakeoff.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\checkradiatormode.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
